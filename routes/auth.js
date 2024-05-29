@@ -48,12 +48,21 @@ app.post('/login', passport.authenticate('local', {
     res.send('Login Attempt was successful.');
   });
 
-  app.post('/logout', function(req, res, next) {
+  app.get('/logout', function(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
-      res.redirect('/');
+      res.status(200)
     });
   });
+
+  app.get('/', function(req, res, next) {
+    res.writeHead(302, {
+      'Location': 'http://localhost:3000/login'
+      //add other headers here...
+    })
+  });
+
+
 
   /*
   Protected Route -- Look in the account controller for
@@ -72,7 +81,7 @@ app.get('/profile', function(req, res) {
   
   app.get('/current_user', (req, res) => {
     if (req.isAuthenticated()) {
-        res.send(req.user);
+        res.send(req.user.username);
     } else {
         res.send(false);
     }

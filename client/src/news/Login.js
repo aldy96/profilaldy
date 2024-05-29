@@ -7,23 +7,8 @@ function Login(props){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:5000/login', { username, password });
-            console.log(response); // untuk melihat respons dari permintaan POST
-            
-            // Mendapatkan URL tujuan dari header 'Location'
-            const redirectURL = response.headers['Location'];
-    
-            // Mengarahkan halaman ke URL tujuan
-            window.location.href = redirectURL;
-        } catch (error) {
-            console.error("error:", error);
-        }
-    };
 
-    const loginlain = async function (e) {
+    const loginhandler = async function (e) {
         e.preventDefault();
       
         const response = await fetch("http://localhost:5000/login", {
@@ -31,20 +16,16 @@ function Login(props){
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: 'include',
           body: JSON.stringify({
             username,
             password,
           }),
         });
-        
-        // const result = response.json();
-      
-        // const data = await result;
-       
-        // const location = data.location;
-        // console.log(location)
-        // window.location.href = location;
+        refresh()
       };
+
+      const refresh = () => {window.location.reload(true)}
 
     
       const getuser = async (e) => {
@@ -66,7 +47,7 @@ function Login(props){
     return(
         <div className=" bg-gray-800 text-cyan-300 w-screen h-screen flex justify-center items-center">
            
-            <form onSubmit={loginlain} >
+            <form onSubmit={loginhandler} >
                 <div className=" flex flex-col pb-5">
                     <label className=" pb-2" htmlFor="username">username : </label>
                     <input className="neumorpInput p-2 flex justify-center outline-none"  type="text" id='username' onChange={e=>setUsername(e.target.value)} value={username} required />
