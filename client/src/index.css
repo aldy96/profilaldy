@@ -3,8 +3,29 @@
 @tailwind utilities;
 
 .neumorp1{
-    border-radius: 39px;
+border-radius: 39px;
 background: linear-gradient(145deg, #212c3b, #1c2532);
 box-shadow:  5px 5px 10px #141a23,
              -5px -5px 10px #2a384b;
+}
+
+.neumorp1:hover{
+    border-radius: 39px;
+background: linear-gradient(145deg, #212c3b, #212c3b);
+box-shadow:  5px 5px 10px #141a23,
+             -5px -5px 10px #2a384b;
+}
+
+.neumorp1.clicked{
+    border-radius: 39px;
+background: #1f2937;
+box-shadow: inset 5px 5px 10px #141a23,
+            inset -5px -5px 10px #2a384b;
+}
+
+.neumorpInput{
+border-radius: 39px;
+background: #1f2937;
+box-shadow: inset 5px 5px 10px #141a23,
+            inset -5px -5px 10px #2a384b;
 }

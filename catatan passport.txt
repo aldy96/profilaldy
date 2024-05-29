@@ -1,0 +1,11 @@
+Tahapan dalam Authentikasi dengan passportJS
+
+1. Install dan import passportJS beserta Strategy nya
+2. Buat middleware untuk menangani session ==> membuat object "req.session"
+3. Inisiasi passportJS ==> membuat obejct "req.session.passport"
+4. Buat SERIALIZE untuk menempelkan hasil Authentikasi user ==> membuat object "req.session.passport.user"
+5. Buat DeSerialize untuk melepaskan "session.passport" ==> menghasilkan "req.user"
+6. untuk memastikan dalam kondisi login, gunakan object "req.isAuthenticated()" 
+7. Untuk logout gunakan "req.logOut()"
+
+Sumber ==> https://medium.com/@prashantramnyc/node-js-with-passport-authentication-simplified-76ca65ee91e5
