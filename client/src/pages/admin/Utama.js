@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Login from './Login';
 import Logout from './Logout';
 import axios from 'axios';
-import * as actions from '../actions'
+import * as actions from '../../actions'
 
 class Utama extends Component {
 
